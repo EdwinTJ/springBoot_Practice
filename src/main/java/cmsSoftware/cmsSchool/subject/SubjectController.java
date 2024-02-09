@@ -23,17 +23,17 @@ public class SubjectController {
     TeacherRepository teacherRepository;
 
     @GetMapping("/subjects")
-    List<SubjectModel> getSubjects() {
+    public List<SubjectModel> getSubjects() {
         return subjectRepository.findAll();
     }
 
     @PostMapping("/subjects")
-    SubjectModel createSubject(@RequestBody SubjectModel subject) {
+    public SubjectModel createSubject(@RequestBody SubjectModel subject) {
         return subjectRepository.save(subject);
     }
 
     @PutMapping("/subjects/{subjectId}/students/{studentId}")
-    SubjectModel addStudentToSubject(
+    public SubjectModel addStudentToSubject(
             @PathVariable Long subjectId,
             @PathVariable Long studentId
     ) {
@@ -44,7 +44,7 @@ public class SubjectController {
     }
 
     @PutMapping("subjects/{subjectId}/teacher/{teacherId}")
-    SubjectModel assignTeacherToSubject(
+    public SubjectModel assignTeacherToSubject(
             @PathVariable Long subjectId,
             @PathVariable Long teacherId
     ) {
