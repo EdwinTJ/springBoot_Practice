@@ -17,11 +17,11 @@ public class ClassRoomModel {
     private String grade;
     private String level;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private TeacherModel teacher;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "classroom_student",
             joinColumns = @JoinColumn(name = "classroom_id"),
