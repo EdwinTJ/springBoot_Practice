@@ -18,11 +18,11 @@ public class StudentModel {
     private String name;
 
     @JsonIgnore
-    @ManyToMany(mappedBy ="enrolledStudents", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy ="enrolledStudents")
     private Set<SubjectModel> subjects = new HashSet<>();
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "classRoomStudents", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "classRoomStudents")
     private Set<ClassRoomModel> classRooms = new HashSet<>();
 
     public Long getId() {
@@ -47,5 +47,13 @@ public class StudentModel {
 
     public void setSubjects(Set<SubjectModel> subjects) {
         this.subjects = subjects;
+    }
+
+    public Set<ClassRoomModel> getClassRooms() {
+        return classRooms;
+    }
+
+    public void setClassRooms(Set<ClassRoomModel> classRooms) {
+        this.classRooms = classRooms;
     }
 }
