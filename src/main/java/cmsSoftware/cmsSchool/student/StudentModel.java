@@ -1,5 +1,6 @@
 package cmsSoftware.cmsSchool.student;
 
+import cmsSoftware.cmsSchool.classroom.ClassRoomModel;
 import cmsSoftware.cmsSchool.subject.SubjectModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -19,6 +20,10 @@ public class StudentModel {
     @JsonIgnore
     @ManyToMany(mappedBy ="enrolledStudents")
     private Set<SubjectModel> subjects = new HashSet<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "classRoomStudents")
+    private Set<ClassRoomModel> classRooms = new HashSet<>();
 
     public Long getId() {
         return id;

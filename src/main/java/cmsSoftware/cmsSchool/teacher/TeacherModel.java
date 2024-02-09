@@ -1,5 +1,6 @@
 package cmsSoftware.cmsSchool.teacher;
 
+import cmsSoftware.cmsSchool.classroom.ClassRoomModel;
 import cmsSoftware.cmsSchool.subject.SubjectModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -19,6 +20,9 @@ public class TeacherModel {
     @OneToMany(mappedBy = "teacher")
     private Set<SubjectModel> subjects;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "teacher")
+    private Set<ClassRoomModel> classRooms;
     private String name;
 
     public Long getId() {
@@ -35,6 +39,14 @@ public class TeacherModel {
 
     public Set<SubjectModel> getSubjects() {
         return this.subjects;
+    }
+
+    public Set<ClassRoomModel> getClassRooms() {
+        return classRooms;
+    }
+
+    public void setClassRooms(Set<ClassRoomModel> classRooms) {
+        this.classRooms = classRooms;
     }
 
 }
